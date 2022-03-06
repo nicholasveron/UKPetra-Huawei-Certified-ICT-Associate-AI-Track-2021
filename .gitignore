@@ -1101,3 +1101,14 @@ engine.py
 FORMULIR PERMOHONAN SKKK KEGIATAN EKSTERNAL KAMPUS.pdf
 transforms.py
 utils.py
+makdown.txt
+Rebar Count Detection - UKPetra - ori.ipynb
+Rebar Count Detection - UKPetra - Clean.ipynb
+__pycache__/coco_eval.cpython-36.pyc
+__pycache__/coco_utils.cpython-36.pyc
+__pycache__/engine.cpython-36.pyc
+__pycache__/transforms.cpython-36.pyc
+__pycache__/transforms.cpython-39.pyc
+__pycache__/utils.cpython-36.pyc
+__pycache__/utils.cpython-39.pyc
+.gitignore
