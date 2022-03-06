@@ -1,4 +1,4 @@
-## Rebar Counting Computer Vision using Faster RCNN with ResNet-50 Pretrained Backbone
+# Rebar Counting Computer Vision using Faster RCNN with ResNet-50 Pretrained Backbone
 **For Huawei Certified ICT Associate Competition 2021 AI Track - Indonesia (UKPetra)
 October 29th 2021**
 
@@ -6,22 +6,24 @@ October 29th 2021**
 
 [![Open in Colab](https://camo.githubusercontent.com/84f0493939e0c4de4e6dbe113251b4bfb5353e57134ffd9fcab6b8714514d4d1/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667)](https://githubtocolab.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021/blob/master/Rebar_Count_Detection_UKPetra.ipynb)
 
-### Table of Contents
-[TOCM]
+## Table of Contents
 
-[TOC]
+<ul class="markdown-toc-list"><li><a class="toc-level-1" href="https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#rebar-counting-computer-vision-using-faster-rcnn-with-resnet-50-pretrained-backbone" level="1">Rebar Counting Computer Vision using Faster RCNN with ResNet-50 Pretrained Backbone</a><ul><li><a class="toc-level-2" href="https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#table-of-contents" level="2">Table of Contents</a></li><li><a class="toc-level-2" href="https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#team-members-ukpetra" level="2">Team Members (UKPetra)</a></li><li><a class="toc-level-2" href="https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#prerequisites" level="2">Prerequisites</a></li><li><a class="toc-level-2" href="https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#datasets" level="2">Datasets</a></li><li><a class="toc-level-2" href="https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#code-breakdown" level="2">Code Breakdown</a><ul><li><a class="toc-level-3" href="https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#pytorch-and-pycocotools-installation-and-initialization" level="3">PyTorch and Pycocotools Installation and Initialization</a></li><li><a class="toc-level-3" href="https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#downloading-train-and-test-datasets" level="3">Downloading Train and Test Datasets</a></li><li><a class="toc-level-3" href="https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#downloading-and-extracting-pytorch-vision-api-coco-helpers" level="3">Downloading and Extracting PyTorch Vision API Coco Helpers</a><ul><li><a class="toc-level-4" href="https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#get_transform-function" level="4">get_transform Function</a></li></ul></li><li><a class="toc-level-3" href="https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#previewing-the-dataset" level="3">Previewing the Dataset</a><ul><li><a class="toc-level-4" href="https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#read_xml-function" level="4">read_xml Function</a></li></ul></li><li><a class="toc-level-3" href="https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#creating-pytorch-dataset-class-for-rebar-dataset" level="3">Creating PyTorch Dataset Class for Rebar Dataset</a><ul><li><a class="toc-level-4" href="https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#rebardataset-class" level="4">RebarDataset Class</a></li></ul></li><li><a class="toc-level-3" href="https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#creating-faster-rcnn-object-detection-model-with-pretrained-resnet50-backbone" level="3">Creating Faster RCNN Object Detection Model with Pretrained ResNet50 Backbone</a></li><li><a class="toc-level-3" href="https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#loading-the-dataset-and-applying-data-augmentation" level="3">Loading the Dataset and Applying Data Augmentation</a></li><li><a class="toc-level-3" href="https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#creating-the-optimizer-and-learning-rate-scheduler" level="3">Creating the Optimizer and Learning Rate Scheduler</a></li><li><a class="toc-level-3" href="https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#training-the-model" level="3">Training the Model</a></li><li><a class="toc-level-3" href="https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#loading-the-best-model-state-and-previewing-the-model-detection" level="3">Loading the Best Model State and Previewing the Model Detection</a></li></ul></li><li><a class="toc-level-2" href="https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#results" level="2">Results</a><ul></ul></li></ul></li></ul>
 
-### Team Members (UKPetra)
+## Team Members (UKPetra)
 - **Nicholas Sebastian Veron**
-[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nsv-/) [![](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:nicholassebastianveron@gmail.com) [![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/illegallyCrushed) [![](https://img.shields.io/badge/Line-00C300?style=for-the-badge&logo=line&logoColor=white)](https://line.me/ti/p/r1h6NjFoFK)
+
+	[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nsv-/) [![](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:nicholassebastianveron@gmail.com) [![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/illegallyCrushed) [![](https://img.shields.io/badge/Line-00C300?style=for-the-badge&logo=line&logoColor=white)](https://line.me/ti/p/r1h6NjFoFK)
 
 - **Vincent Darmawan**
-[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/vincent-darmawan-817816193/) [![](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:vincentd12346@gmail.com) [![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/vincentdar)
+
+	[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/vincent-darmawan-817816193/) [![](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:vincentd12346@gmail.com) [![](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/vincentdar)
 
 - **Yoshua Kaleb Purwanto**
-[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yoshua-kaleb-purwanto-5678341b4/) [![](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:yoshuakaleb049@gmail.com)
 
-### Prerequisites
+	[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yoshua-kaleb-purwanto-5678341b4/) [![](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:yoshuakaleb049@gmail.com)
+
+## Prerequisites
 - [Python >= 3.6](https://www.python.org/downloads/release/python-360/)
 - [Pillow](https://github.com/python-pillow/Pillow)
 - [Numpy](https://github.com/numpy/numpy)
@@ -33,11 +35,11 @@ October 29th 2021**
 - [PyTorch 1.4.0 with torchvision 0.5.0](https://pytorch.org/docs/1.4.0/)
 - [CUDA & cudatoolkit 9.2 (optional)](https://developer.nvidia.com/cuda-92-download-archive-base)
 
-### Datasets
+## Datasets
 - [Rebar Count Dataset for Huawei Certified ICT Associate Competition 2021 AI Track - Indonesia](https://cnnorth4-modelhub-datasets-obsfs-sfnua.obs.cn-north-4.myhuaweicloud.com/content/c2c1853f-d6a6-4c9d-ac0e-203d4c304c88/NkxX5K/dataset/rebar_count_datasets.zip)
 
-### Code Breakdown
-#### PyTorch and Pycocotools Installation and Initialization
+## Code Breakdown
+### PyTorch and Pycocotools Installation and Initialization
 First, we install [PyTorch 1.4.0 with torchvision 0.5.0](https://pytorch.org/docs/1.4.0/) to the current python kernel (assuming [numpy](https://github.com/numpy/numpy), [pillow](https://github.com/python-pillow/Pillow), [request](https://github.com/matplotlib/matplotlib), [matplotlib](https://github.com/matplotlib/matplotlib), and [cv2](https://github.com/opencv/opencv-python) are already installed).
 ```python
 # import pytorch ver 1.4.0 and pycocotools
@@ -63,7 +65,7 @@ Then it checks if CUDA is available or not, if CUDA is not available then CPU wi
 ```python
 DEVICE = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 ```
-#### Downloading Train and Test Datasets
+### Downloading Train and Test Datasets
 Next, we download ["Rebar Count" training and test datasets from Huawei Cloud Bucket](https://cnnorth4-modelhub-datasets-obsfs-sfnua.obs.cn-north-4.myhuaweicloud.com/content/c2c1853f-d6a6-4c9d-ac0e-203d4c304c88/NkxX5K/dataset/rebar_count_datasets.zip), extracts it, and deletes it to clear up storage space.
 ```python
 # download training and test data
@@ -113,7 +115,7 @@ with zipfile.ZipFile('./rebar_count_datasets.zip', 'r') as zip_ref:
 if os.path.exists('./v0.6.0.zip'):
     os.remove('./v0.6.0.zip')
 ```
-#### Downloading and Extracting PyTorch Vision API Coco Helpers
+### Downloading and Extracting PyTorch Vision API Coco Helpers
 Next, we download [PyTorch Vision API Coco Helpers](https://github.com/pytorch/vision/tree/v0.6.0) for training coco-type datasets, it has custom transforms and useful utilities to help training coco-type datasets. We specifically chose version 0.6.0 because it is the version that works with torchvision 0.5.0.
 ```python
 url = 'https://github.com/pytorch/vision/archive/refs/tags/v0.6.0.zip'
@@ -142,7 +144,7 @@ def get_transform(train):
     return T.Compose(transforms)
 ```
 After extracting and moving the files into appropriate folder, we make a function to help with coco-type dataset data augmentation.
-##### get_transform Function
+#### get_transform Function
 ```python
 import transforms as T
 
@@ -153,8 +155,9 @@ def get_transform(train):
         transforms.append(T.RandomHorizontalFlip(0.5))
     return T.Compose(transforms)
 ```
-#### Previewing the Dataset
+### Previewing the Dataset
 ![](https://raw.githubusercontent.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021/master/example/2022-02-15%2014.47.09.png)
+
 Next, we preview the dataset by loading the picture and drawing a rectangle on where the dataset thinks there is a rebar, and display it using [matplotplib pyplot](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.html#:~:text=pyplot%20is%20a%20state%2Dbased,pyplot%20as%20plt%20x%20%3D%20np.).
 ```python
 # inspecting dataset
@@ -209,7 +212,7 @@ for index, file_name in enumerate(files[:2]):
 plt.show()
 ```
 We also created a function that reads the bounding box for each rebar in a picture from an .xml file using [python xml module](https://docs.python.org/3/library/xml.html), then return a tuple of numpy array of [xmin, ymin, xmax, ymax] and the bounding box label (in this case it is only steel).
-##### read_xml Function
+#### read_xml Function
 ```python
 def read_xml(xml_path):
     tree = ET.parse(xml_path)
@@ -228,9 +231,9 @@ def read_xml(xml_path):
             labels.append(label)
     return np.array(boxes, dtype=np.float64), labels
 ```
-#### Creating PyTorch Dataset Class for Rebar Dataset
-Next we created class inherited from [PyTorch Dataset class](https://pytorch.org/docs/1.4.0/data.html#torch.utils.data.Dataset) called [RebarDataset](#RebarDataset Class) to allow data to loaded using [PyTorch DataLoader](https://pytorch.org/docs/1.4.0/data.html#torch.utils.data.DataLoader), it simplifies the training and test process by grouping all bounding boxes and the picture together.
-##### RebarDataset Class
+### Creating PyTorch Dataset Class for Rebar Dataset
+Next we created class inherited from [PyTorch Dataset class](https://pytorch.org/docs/1.4.0/data.html#torch.utils.data.Dataset) called [RebarDataset](https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#rebardataset-class) to allow data to loaded using [PyTorch DataLoader](https://pytorch.org/docs/1.4.0/data.html#torch.utils.data.DataLoader), it simplifies the training and test process by grouping all bounding boxes and the picture together.
+#### RebarDataset Class
 ```python
 # creating pytorch dataset for rebar
 
@@ -270,7 +273,7 @@ class RebarDataset(torch.utils.data.Dataset):
     def __len__(self):
         return len(self.imgs)
 ```
-When an instance of [RebarDataset](#RebarDataset Class) is created, it stores the root of the folder and the transformations that will be applied, it also looks for all images in "JPEGImages" folder and stores it in a list.
+When an instance of [RebarDataset](https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#rebardataset-class) is created, it stores the root of the folder and the transformations that will be applied, it also looks for all images in "JPEGImages" folder and stores it in a list.
 ```python
 def __init__(self, root, transforms=None):
         self.root = root
@@ -306,7 +309,7 @@ Then when the \_\_getitem\_\_ operator ( [] ) is called, it loads the image and 
 
         return img, target
 ```
-#### Creating Faster RCNN Object Detection Model with Pretrained ResNet50 Backbone
+### Creating Faster RCNN Object Detection Model with Pretrained ResNet50 Backbone
 Next, we created a [pretrained Faster RCNN model](https://pytorch.org/docs/1.4.0/torchvision/models.html#torchvision.models.detection.fasterrcnn_resnet50_fpn) from [torchvision models module](https://pytorch.org/docs/1.4.0/torchvision/models.html) and set some parameters.
 ```python
 # load faster rcnn model pretrained with resnet50 backbone
@@ -340,8 +343,8 @@ Then we move the model to the GPU (if available).
 ```python
 model.to(DEVICE)
 ```
-#### Loading the Dataset and Applying Data Augmentation
-Next step, we load the dataset and the [augmentation functon](#get_transform Function) that we made before, splits the dataset to train and test datasets, and then we created a [PyTorch DataLoader](https://pytorch.org/docs/1.4.0/data.html#torch.utils.data.DataLoader) instance for each datasets.
+### Loading the Dataset and Applying Data Augmentation
+Next step, we load the dataset and the [augmentation functon](https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#get_transform-function) that we made before, splits the dataset to train and test datasets, and then we created a [PyTorch DataLoader](https://pytorch.org/docs/1.4.0/data.html#torch.utils.data.DataLoader) instance for each datasets.
 ```python
 # load dataset and split the dataset
 
@@ -365,7 +368,7 @@ test_data_loader = torch.utils.data.DataLoader(
     test_dataset, batch_size=1, shuffle=False,
     collate_fn=utils.collate_fn)
 ```
-We enabled the [augmentation functon](#get_transform Function) on the training dataset, but not on the test dataset.
+We enabled the [augmentation functon](https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#get_transform-function) on the training dataset, but not on the test dataset.
 ```python
 train_dataset = RebarDataset("./rebar_count_datasets/VOC2007/",get_transform(True))
 test_dataset = RebarDataset("./rebar_count_datasets/VOC2007/",get_transform(False))
@@ -389,7 +392,7 @@ test_data_loader = torch.utils.data.DataLoader(
     test_dataset, batch_size=1, shuffle=False,
     collate_fn=utils.collate_fn)
 ```
-#### Creating the Optimizer and Learning Rate Scheduler
+### Creating the Optimizer and Learning Rate Scheduler
 Next, we used [Adam](https://pytorch.org/docs/1.4.0/optim.html#torch.optim.Adam) and [StepLR](https://pytorch.org/docs/1.4.0/optim.html#torch.optim.Adam) from [PyTorch optimizer module](https://pytorch.org/docs/1.4.0/optim.html) as the optimizer and the learning rate scheduler. We set the initial learning rate to 3x10<sup>-4</sup> and every iteration the learning rate will be reduced by the factor of 0.06.
 ```python
 # create optimizer and learning rate scheduler
@@ -402,8 +405,8 @@ lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer,
                                                step_size=1,
                                                gamma=0.06)
 ```
-#### Training the Model
-Next we trained the [model that we created before](#Creating Faster RCNN Object Detection Model with Pretrained ResNet50 Backbone) with the [train and test datasets that we had processed](#Loading the Dataset and Applying Data Augmentation) using the helper functions from [PyTorch Vision API engine module](https://github.com/pytorch/vision/blob/v0.6.0/references/detection/engine.py) and [the optimizer and the learning rate scheduler we created before](#Creating the Optimizer and Learning Rate Scheduler). Then we save the model for each epoch to "./model" folder.
+### Training the Model
+Next we trained the [model that we created before](https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#creating-faster-rcnn-object-detection-model-with-pretrained-resnet50-backbone) with the [train and test datasets that we had processed](https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#loading-the-dataset-and-applying-data-augmentation) using the helper functions from [PyTorch Vision API engine module](https://github.com/pytorch/vision/blob/v0.6.0/references/detection/engine.py) and [the optimizer and the learning rate scheduler we created before](https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#creating-the-optimizer-and-learning-rate-scheduler). Then we save the model for each epoch to "./model" folder.
 ```python
 # train the model and save every epoch
 
@@ -455,7 +458,7 @@ torch.save(model.cpu().state_dict(), path) # saving model
 # moving model to GPU for further training
  model.to(DEVICE)
 ```
-#### Loading the Best Model State and Previewing the Model Detection
+### Loading the Best Model State and Previewing the Model Detection
 Finally, we loaded the last saved model, and tested our model and displayed the results.
 ```python
 # load last epoch
@@ -529,7 +532,7 @@ for i, file_name in enumerate(files[:15]):
     plt.imshow(image_draw)
     plt.show()
 ```
-We created the test model with same configuration as [the training model](#Creating Faster RCNN Object Detection Model with Pretrained ResNet50 Backbone).
+We created the test model with same configuration as [the training model](https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021#creating-faster-rcnn-object-detection-model-with-pretrained-resnet50-backbone).
 ```python
 num_classes = 2  # 1 rebar + background
 model = torchvision.models.detection.fasterrcnn_resnet50_fpn(
@@ -591,7 +594,7 @@ for i, file_name in enumerate(files[:15]):
     plt.imshow(image_draw)
     plt.show()
 ```
-### Results
+## Results
 Here are screenshots of some of the results.
 ![](https://raw.githubusercontent.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021/master/example/download5.png)
 ![](https://raw.githubusercontent.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021/master/example/download6.png)
