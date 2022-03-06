@@ -2,9 +2,9 @@
 **For Huawei Certified ICT Associate Competition 2021 AI Track - Indonesia (UKPetra)
 October 29th 2021**
 
-![](https://github.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021/raw/master/example/download5.png)
-
 [![Open in Colab](https://camo.githubusercontent.com/84f0493939e0c4de4e6dbe113251b4bfb5353e57134ffd9fcab6b8714514d4d1/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667)](https://githubtocolab.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021/blob/master/Rebar_Count_Detection_UKPetra.ipynb)
+
+![](https://raw.githubusercontent.com/illegallyCrushed/UKPetra-Huawei-Certified-ICT-Associate-AI-Track-2021/master/example/download5.png)
 
 ## Table of Contents
 
