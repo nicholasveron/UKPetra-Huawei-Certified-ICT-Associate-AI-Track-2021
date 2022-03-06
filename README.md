@@ -1,4 +1,4 @@
-##Rebar Counting Computer Vision using Faster RCNN with ResNet-50 Pretrained Backbone
+## Rebar Counting Computer Vision using Faster RCNN with ResNet-50 Pretrained Backbone
 **For Huawei Certified ICT Associate Competition 2021 AI Track - Indonesia (UKPetra)
 October 29th 2021**
 
@@ -21,7 +21,7 @@ October 29th 2021**
 - **Yoshua Kaleb Purwanto**
 [![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yoshua-kaleb-purwanto-5678341b4/) [![](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:yoshuakaleb049@gmail.com)
 
-###Prerequisites
+### Prerequisites
 - [Python >= 3.6](https://www.python.org/downloads/release/python-360/)
 - [Pillow](https://github.com/python-pillow/Pillow)
 - [Numpy](https://github.com/numpy/numpy)
@@ -33,10 +33,10 @@ October 29th 2021**
 - [PyTorch 1.4.0 with torchvision 0.5.0](https://pytorch.org/docs/1.4.0/)
 - [CUDA & cudatoolkit 9.2 (optional)](https://developer.nvidia.com/cuda-92-download-archive-base)
 
-###Datasets
+### Datasets
 - [Rebar Count Dataset for Huawei Certified ICT Associate Competition 2021 AI Track - Indonesia](https://cnnorth4-modelhub-datasets-obsfs-sfnua.obs.cn-north-4.myhuaweicloud.com/content/c2c1853f-d6a6-4c9d-ac0e-203d4c304c88/NkxX5K/dataset/rebar_count_datasets.zip)
 
-###Code Breakdown
+### Code Breakdown
 #### PyTorch and Pycocotools Installation and Initialization
 First, we install [PyTorch 1.4.0 with torchvision 0.5.0](https://pytorch.org/docs/1.4.0/) to the current python kernel (assuming [numpy](https://github.com/numpy/numpy), [pillow](https://github.com/python-pillow/Pillow), [request](https://github.com/matplotlib/matplotlib), [matplotlib](https://github.com/matplotlib/matplotlib), and [cv2](https://github.com/opencv/opencv-python) are already installed).
 ```python
